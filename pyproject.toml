@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "google-hash-codes"
+version = "1"
+description = "solutions for the different hash code contests"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+click = "^7.1.2"
+pre-commit = "^2.9.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
