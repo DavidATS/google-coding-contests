@@ -17,7 +17,7 @@ def process_file(data_set_file):
                 file_name = file.name
                 break
 
-    solution(BASE_FOLDER_PATH + file_name)
+    solution(BASE_FOLDER_PATH + file_name, data_set_file)
 
 
 if __name__ == "__main__":

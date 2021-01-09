@@ -98,6 +98,18 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "tqdm"
+version = "4.55.2"
+description = "Fast, Extensible Progress Meter"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
+
+[package.extras]
+dev = ["py-make (>=0.1.0)", "twine", "wheel"]
+telegram = ["requests"]
+
+[[package]]
 name = "virtualenv"
 version = "20.2.2"
 description = "Virtual Python Environment builder"
@@ -118,7 +130,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c2a43e38d056ea245b498a2a3af67aa47e1be8112b97b429dd36642b3ad8c398"
+content-hash = "3dc9785146e1413ed117b7602405c0404581eb8407c4e90240768f79a435b200"
 
 [metadata.files]
 appdirs = [
@@ -173,6 +185,10 @@ six = [
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+tqdm = [
+    {file = "tqdm-4.55.2-py2.py3-none-any.whl", hash = "sha256:54985cecd51071f3faa2a07a862c24be1426f925353d82b3dde03f7609d63248"},
+    {file = "tqdm-4.55.2.tar.gz", hash = "sha256:86ca00c4942c3b3dc7ed31bae44cd2db38ef85ca05a7920f6a6c52ad7fcac904"},
 ]
 virtualenv = [
     {file = "virtualenv-20.2.2-py2.py3-none-any.whl", hash = "sha256:54b05fc737ea9c9ee9f8340f579e5da5b09fb64fd010ab5757eb90268616907c"},

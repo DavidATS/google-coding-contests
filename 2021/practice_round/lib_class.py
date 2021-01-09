@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import List
 
+from tqdm import tqdm
+
 
 class Pizza:
     def __init__(self, ingredients, index):
@@ -46,7 +48,7 @@ class ObjectBuilder:
 
         with open(self.file_name, "r") as file:
             c = 0
-            for line in file:
+            for line in tqdm(file):
                 if first_line:
                     teams_data = line.split(" ")
                     teams_data.pop(0)
@@ -125,10 +127,15 @@ class SolutionFileBuilder:
     def __init__(self, teams: List[Team], input_file_data: str):
         self.teams = teams
         self.input_file_data = input_file_data
+        self.FOLDER_PATH = "solutions/"
 
     def run(self):
         solution_file_n = (
-            self.input_file_data + "_solution" + str(datetime.now())
+            self.FOLDER_PATH
+            + self.input_file_data
+            + "_"
+            + "solution_"
+            + str(datetime.now())
         )
         with open(solution_file_n, "a") as file:
             file.write(f"{len(self.teams)}\n")
