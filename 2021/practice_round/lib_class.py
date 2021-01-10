@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 from typing import List
 
@@ -73,16 +74,28 @@ class PizzaProvider:
         self.dispatched_teams = []
 
     def run(self):
+        total = len(self.teams)
+        pbar = tqdm(total=total)
         while self._can_dispatch:
             current_team = self._choose_team()
             while not current_team.is_complete:
                 pizza_to_add = self._dispatch(current_team)
                 current_team.add_pizza(pizza_to_add)
+            pbar.update(total - len(self.dispatched_teams))
+            logging.info(
+                f"Teams dispatched: {len(self.dispatched_teams)}/{total}"
+            )
             self.dispatched_teams.append(current_team)
+        pbar.close()
 
     @property
     def _can_dispatch(self):
-        return len(self.pizzas) >= min(self.teams, key=lambda t: t.size).size
+        if len(self.teams) == 0:
+            return False
+        else:
+            return (
+                len(self.pizzas) >= min(self.teams, key=lambda t: t.size).size
+            )
 
     def _choose_team(self):
         # ToDo: hash teams by size to make this method constant
@@ -97,7 +110,6 @@ class PizzaProvider:
         We choose the pizza with the max number of
         different ingredients each time
         """
-
         best_pizza = self.pizzas[0]
         best_pizza_index = 0
         same_ingredients = best_pizza.ingredients.intersection(
@@ -139,8 +151,7 @@ class SolutionFileBuilder:
         )
         with open(solution_file_n, "a") as file:
             file.write(f"{len(self.teams)}\n")
-            for team in self.teams:
-                print(team)
+            for team in tqdm(self.teams):
                 team_data = f"{team.size}"
                 for pizza in team.order:
                     team_data += f" {pizza.index}"
