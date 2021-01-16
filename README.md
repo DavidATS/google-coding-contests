@@ -8,3 +8,11 @@
     ```
     poetry install
     ```
+
+ - must learn:
+    - levenstein distance
+    - all permutations
+    - knapsack variations
+    - DFS in graphs
+    - BFS in graphs
+    - djkstra
