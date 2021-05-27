@@ -45,3 +45,5 @@ for i in range(1, t + 1):
 
     print("Case #{}: {}".format(i, greedy(N, B, houses)))
     # check out .format's specification for more formatting options
+
+# test sign commit
